@@ -16,7 +16,13 @@ var port = process.env.PORT || 8080;
 
 // connect to our mongoDB database 
 // (uncomment after you enter in your own credentials in config/db.js)
-mongoose.connect(db.url); 
+ /* MONGOLAB_URI=mongodb://example:example@ds053312.mongolab.com:53312/todolist
+ * 'mongodb://example:example@ds053312.mongolab.com:53312/todolist'
+ */
+mongoose.connect(db.url, function (error) {
+    if (error) console.error(error);
+    else console.log('mongo connected');
+});
 
 // get all data/stuff of the body (POST) parameters
 // parse application/json 
